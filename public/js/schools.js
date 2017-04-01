@@ -12,7 +12,7 @@ $.get("/myCollege/"+sessionStorage.id, function(data) {
   for (i in myData) {
     col = myData[i]
     table = $('#schoolTable')
-    table.append($('<tr><td>'+col.College+'</td><td>'+col.City+'</td><td>'+col.State+'</td><td>'+col.Admission+'</td><td>'+col.Tuition_In+'</td><td>'+col.Tuition_Out+'</td></tr>'))
+    table.append($('<tr><td>'+col.College+'</td><td>'+col.City+'</td><td>'+col.State+'</td><td>'+(col.Admission*100).toFixed(2)+'</td><td>'+col.Tuition_In+'</td><td>'+col.Tuition_Out+'</td></tr>'))
   }
   // //create 5 arrays for each data object:
   // 	newArray0 = myData[0];

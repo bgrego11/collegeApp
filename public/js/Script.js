@@ -111,6 +111,7 @@ if (state === "") {
     .done(function(data) {
       // log the data we found
       console.log(data);
+      $('#search-results').empty();
 // create html for each college object in the array returned by query
   //  needs buttons with college id as data in the element
 for (i in data) {
