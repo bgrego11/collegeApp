@@ -29,12 +29,13 @@
 // });
 
 $(document).ready(function(){
-  if (sessionStorage.id !== "") {
+  if (sessionStorage.id !== "" || undefined) {
     $('#user').html("logged in as "+sessionStorage.name )
     logBtn = $('<button>');
     logBtn.addClass("btn btn-default");
     logBtn.addClass("logout");
     logBtn.html("logout");
+
 
     $('#user').append(logBtn)
   }

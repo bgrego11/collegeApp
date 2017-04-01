@@ -66,3 +66,28 @@ body {
 
 }
 
+.label {
+    color: white;
+}
+
+#passColor {
+    color: white;
+}
+
+#natural {
+    background-color: rgba(72, 85, 99, 0.8);
+}
+
+.logout {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn {
+    margin-top: 5px;
+    margin-left: 10px;
+    float: right;
+}
