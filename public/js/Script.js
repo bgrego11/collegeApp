@@ -8,9 +8,11 @@ $(document).ready(function(){
     logBtn.addClass("btn btn-default");
     logBtn.addClass("logout");
     logBtn.html("logout");
-
-
     $('#user').append(logBtn)
+  }
+  else {
+    alert("you must be logged in to use this app");
+    window.open('/home', "_self")
   }
 //button event to handle added favorites
   $(document).on("click", ".btn-danger", function(){
@@ -55,7 +57,7 @@ $("#admitButton").on("click", function(event) {
   adRange = []
   admit = parseFloat($("#admitList option:selected").val())
     if (admit === 1) {
-      adRange = [0,1]
+      adRange = [-.1,1]
     }
     else if (admit === .8) {
       adRange = [.8,1]
@@ -94,7 +96,7 @@ for (i in data) {
   newDiv.addClass("well");
   newDiv.append($('<h4>').html(data[i].College));
   newDiv.append($('<h5>').html(data[i].City+", "+data[i].State));
-  var link = $('<a>').attr("href", data[i].Webstie);
+  var link = $('<a>').attr("href", "http://"+data[i].Webstie);
   favBtn = $('<button>').attr("data-id", data[i].id);
   favBtn.addClass("btn btn-danger pull-right");
   heart = $('<span>').addClass('glyphicon glyphicon-heart');

@@ -164,6 +164,17 @@ app.get("/myCollege/:id",function(req,res)  {
 })
 
 
+app.post("/myCollege/del", function(req,res) {
+	db.myCollege.destroy({
+		where: {
+			user_id: req.body.user,
+			college_id: req.body.college
+		}
+	}).then(function(results) {
+		return res.json({msg: "deleted"})
+	})
+})
+
 
 }
 

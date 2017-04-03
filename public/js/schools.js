@@ -12,9 +12,34 @@ $.get("/myCollege/"+sessionStorage.id, function(data) {
   for (i in myData) {
     col = myData[i]
     table = $('#schoolTable')
-    table.append($('<tr><td>'+col.College+'</td><td>'+col.City+'</td><td>'+col.State+'</td><td>'+(col.Admission*100).toFixed(2)+'</td><td>'+col.Tuition_In+'</td><td>'+col.Tuition_Out+'</td></tr>'))
+    newRow = $('<tr><td>'+col.College+'</td><td>'+col.City+'</td><td>'+col.State+'</td><td>'+(col.Admission*100).toFixed(2)+'</td><td>'+col.Tuition_In+'</td><td>'+col.Tuition_Out+'</td></tr>');
+    newField = $('<td>')
+    delBtn = $('<button>').attr('data-id', col.id)
+    delBtn.addClass("btn btn-danger delBtn");
+    trash = $('<span>')
+    trash.addClass("glyphicon glyphicon-trash")
+    delBtn.append(trash);
+    newField.append(delBtn);
+    newRow.append(newField)
+    table.append(newRow)
   }
   
 
   });
-  });
+});
+
+$(document).on("click",".delBtn", function(){
+  self = $(this)
+  row = self.parent().parent()
+  id = self.data("id");
+  delData = {
+    user: sessionStorage.id,
+    college: id
+  }
+  $.post("/myCollege/del", delData)
+  .done(function(data) {
+    if (data.msg = "deleted") {
+      row.remove()
+    }
+  })
+})
