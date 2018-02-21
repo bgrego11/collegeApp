@@ -34,19 +34,21 @@
             <a class="nav-link" href="/search">Search</a>
           </li>
       </ul>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">
+          Sign In
+        </button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#createModal">
+          Create User
+        </button>
+        <button type="button" class="btn btn-danger" id="social-link">
+          <a  id="social-link" href="https://github.com/bgrego11/collegeapp" target="_blank">Source Code &nbsp;<i class="fa fa-github"></i></a>
+        </button>
     </div>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">
-        Sign In
-      </button>
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#createModal">
-        Create User
-      </button>
-      <button type="button" class="btn btn-danger" id="social-link">
-        <a  id="social-link" href="https://github.com/bgrego11/collegeapp" target="_blank">Source Code<i class="fa fa-github"></i></a>
-      </button>
   </nav>
 
     <br>
+
+    <!-- Carousal -->
     <div class="container">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -84,8 +86,8 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-  
-  <!-- Modal -->
+  </div>
+  <!--Login Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -99,40 +101,74 @@
             <form>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <input type="text" class="form-control" id="name" placeholder="Enter User Name">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="pw" placeholder="Password">
                 </div>
             </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger">Login</button>
+          <button type="submit" class="btn btn-danger" id="login">Login</button>
         </div>
       </div>
     </div>
   </div>
 
 
+    <!--Create User Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Create User Name</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
 
+                    <label for="exampleInputEmail1">User Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter User Name">
+                    <div id="valid"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="pw" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPass" placeholder="Password">
+                  </div>
+              </form>
+              <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger" id="create" onclick="">Create User</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <footer>
+        <div id="contact">
+              <div id="bottom"><a href="https://github.com/stevens125" target="_blank" class="logo">Steven Snyder | Full Stack Developer</a>
+                <p class="made-by-me">Steven Snyder © 2018.</p>
+            </div>
+          </div>
+      </footer>
 
-<form class="form-inline">
-  <div class="form-group">
-    <label id="passColor" for="exampleInputName2">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Jane Doe">
-  </div>
-  <div class="form-group">
-    <label id="passColor" for="exampleInputEmail2">Password</label>
-    <input type="password" class="form-control" id="pw" placeholder="password">
-  </div>
-  <button type="submit" class="btn btn-default" id="login">Login</button>
-  <button type="submit" class="btn btn-default" id="create">Create User</button>
-  <div id="valid"></div>
-</form>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

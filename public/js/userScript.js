@@ -9,6 +9,8 @@ $("#create").on("click", function(event) {
   }
   console.log(user)
 
+// post users to database
+
   $.post("/user/create", user)
 
   .done(function(data){
@@ -47,13 +49,26 @@ $("#login").on("click", function(event) {
       console.log(sessionStorage)
       window.open('/search', "_self")
 
-
   })
-
-
-
 });
 
+var firstBox = $('#createUser').val();
+var secondBox = $('#confirmPass').val().trim();
+
+$('#butt').on('click', function(){
+console.log(firstBox)
+})
+
+if(firstBox === secondBox) {
+    document.getElementById('butt').disabled = false;
+}
+
+
+function clicker() {
+
+    var butthole = $('#confirmPass').val()
+    console.log(firstBox)
+}
 // make sure you 'npm install crypto --save'
 
 
