@@ -12,7 +12,15 @@ $("#create").on("click", function(event) {
   $.post("/user/create", user)
 
   .done(function(data){
-      console.log(data)
+      if (data.msg === "user created") {
+      sessionStorage.setItem("id", data.id);
+       sessionStorage.setItem("name", data.name);
+
+      window.open('/search', "_self")
+    }
+    else {
+        $("#valid").html("username already exists")
+    }
       
 
 

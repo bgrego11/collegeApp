@@ -3,7 +3,7 @@ var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
     password = 'd6F3Efeq';
 
-
+//encrypt function from crypto
 function encrypt(text){
   var cipher = crypto.createCipher(algorithm,password)
   var crypted = cipher.update(text,'utf8','hex')
@@ -32,7 +32,7 @@ db.sequelize.sync()
 //Get route to pull the information for all colleges
 //==================================================
 module.exports = function(app) {
-
+//sql query for search
 app.post("/api/college", function(req, res) {
 
 	var state = req.body.state
@@ -59,7 +59,7 @@ app.post("/api/college", function(req, res) {
 
 });
 
-
+//check if user already exist -- sends response
 app.post("/user/create", function(req, res) {
 
 	db.Login.findAll({
@@ -77,7 +77,9 @@ app.post("/user/create", function(req, res) {
 			name: req.body.name,
 			hashPw: encrypt(req.body.password)
 		}).then(function(data) {
-			return res.json(data)
+			return res.json({msg: "user created",
+		id: data.id,
+	name: data.name})
 		})
 	}
 
@@ -86,7 +88,7 @@ app.post("/user/create", function(req, res) {
 
 
 
-
+//pull hashed pw from db by username -- if it matches encrypted login pw return positive response
 app.post("/user/login", function(req, res) {
 
 	db.Login.findAll({
@@ -111,7 +113,7 @@ app.post("/user/login", function(req, res) {
 })
 });
 
-
+//send fav college update -- only if user doesnt already have 5 faves
 app.post("/myCollege/add", function(req,res) {
 	db.myCollege.findAll({
 		where: {
@@ -134,7 +136,7 @@ app.post("/myCollege/add", function(req,res) {
 
 })
 
-
+//retrieve fav colleges of user by user id
 app.get("/myCollege/:id",function(req,res)  {
 	userId = req.params.id;
 	colleges = [];
@@ -162,6 +164,17 @@ app.get("/myCollege/:id",function(req,res)  {
 })
 
 
+app.post("/myCollege/del", function(req,res) {
+	db.myCollege.destroy({
+		where: {
+			user_id: req.body.user,
+			college_id: req.body.college
+		}
+	}).then(function(results) {
+		return res.json({msg: "deleted"})
+	})
+})
+
 
 }
 
@@ -179,75 +192,4 @@ app.get("/myCollege/:id",function(req,res)  {
 
 
 
-
-//==================================================
-//Post route for creating username
-//==================================================
-// app.post("/user/create", function(req, res) {
-// 	db.Login.findAll({
-// 		where: {
-// 			name: {
-// 				$like: req.body.name
-// 			}
-// 		}
-
-// 	}).then(function(results) {
-// 		if (results.length > 0) {
-// 			return res.json({msg: "user already exists"})
-// 		}
-// 		else {
-
-
-// 				salt = genRandomString(32);
-// 				hashedPw = sha512(req.body.password, salt).passwordHash;
-
-// 				console.log(salt)
-// 				console.log(hashedPw)
-
-
-
-// 			db.Login.create({
-// 				name: req.body.name,
-// 				salt: salt,
-// 				hashPw: hashedPw
-// 			}).then(function(data){
-// 				return res.json(data)
-// 			})
-// 		}
-// 	})
-	
-// });
-
-
-// app.post("/user/login", function(req, res) {
-// 	db.Login.findOne({
-// 		where: {
-// 			name: {
-// 				$like: req.body.name
-// 			}
-// 		}
-
-// 	}).then(function(results) {
-// 			salt = results.salt
-// 			hashedPw = results.hashPw
-// 			logHashedPw = sha512(req.body.password, salt).passwordHash;
-
-// 			if (hashedPw === logHashedPw) {
-// 				data = {
-// 					msg: "you logged in"
-// 				}
-// 				return res.json(data)
-// 			}
-// 			else {
-// 				data = {
-// 					msg: "thats an error yo",
-// 					storedHash: hashedPw,
-// 					new: logHashedPw,
-// 					salt: salt
-// 				}
-// 				return res.json(data)
-// 			}
-			
-// });
-// });
 

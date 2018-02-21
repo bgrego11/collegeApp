@@ -1,32 +1,5 @@
 
-// Code here handles what happens when a user submits a new character on the form.
-// Effectively it takes the form inputs then sends it to the server to save in the DB.
-
-// when user clicks add-btn
-// $("#searchButton").on("click", function(event) {
-//   event.preventDefault();
-
-//   // make a newSchool obj
-//   var newSchool = {
-//     // name from name input
-//     state: $("#stateList").val().trim(),
-//     // role from role input
-//     name: $("#nameList").val().trim(),
-//     // age from age input
-//     Admin: $("#admin").val().trim(),
-//   };
-
-//   // send an AJAX POST-request with jQuery
-//   $.post("/api/schools", newSchool)
-//     // on success, run this callback
-//     .done(function(data) {
-//       // log the data we found
-//       console.log(data);
-//       // tell the user we're adding a character with an alert window
-//       alert("Adding school...");
-//     });
-
-// });
+//load username 
 
 $(document).ready(function(){
   if (sessionStorage.id !== "" || undefined) {
@@ -35,11 +8,13 @@ $(document).ready(function(){
     logBtn.addClass("btn btn-default");
     logBtn.addClass("logout");
     logBtn.html("logout");
-
-
     $('#user').append(logBtn)
   }
-
+  else {
+    alert("you must be logged in to use this app");
+    window.open('/home', "_self")
+  }
+//button event to handle added favorites
   $(document).on("click", ".btn-danger", function(){
     self = $(this)
     newFav = {
@@ -60,10 +35,13 @@ $(document).ready(function(){
   
    
   })
+ 
 
+ //logout button clear session and send to home page
   $(document).on("click", ".logout", function(){
     sessionStorage.id = ""
     sessionStorage.name = ""
+    window.open('/home', "_self")
   
    
   })
@@ -72,23 +50,23 @@ $(document).ready(function(){
 })
 
 
-
+//search function
 $("#admitButton").on("click", function(event) {
   event.preventDefault();
   //create an array from html option values to use as the range for college query
   adRange = []
   admit = parseFloat($("#admitList option:selected").val())
     if (admit === 1) {
-      adRange = [0,1]
+      adRange = [-.1,1]
     }
     else if (admit === .8) {
       adRange = [.8,1]
     }
     else if (admit === .5 ) {
-      adRange = [.3, .7]
+      adRange = [.5, .7]
     }
     else if (admit === .2) {
-      adRange = [.01, .2]
+      adRange = [.01, .5]
     }
 //check if state was input -- if not set state to wildcard for query
 state =  $("#stateList").val().trim()
@@ -100,7 +78,7 @@ if (state === "") {
     // name from name input
     state :  state,
     admit: adRange,
-    tuition: parseInt($("#costList option:selected").val())
+    tuition: $("#costList option:selected").val()
   };
 
   console.log(search);
@@ -112,14 +90,13 @@ if (state === "") {
       // log the data we found
       console.log(data);
       $('#search-results').empty();
-// create html for each college object in the array returned by query
-  //  needs buttons with college id as data in the element
+// create html for each college object in the array returned by query make fave buttons
 for (i in data) {
   newDiv = $("<div>");
   newDiv.addClass("well");
   newDiv.append($('<h4>').html(data[i].College));
   newDiv.append($('<h5>').html(data[i].City+", "+data[i].State));
-  var link = $('<a>').attr("href", data[i].Webstie);
+  var link = $('<a>').attr("href", "http://"+data[i].Webstie);
   favBtn = $('<button>').attr("data-id", data[i].id);
   favBtn.addClass("btn btn-danger pull-right");
   heart = $('<span>').addClass('glyphicon glyphicon-heart');
@@ -129,7 +106,6 @@ for (i in data) {
 
 
   newDiv.append((link.html(data[i].Webstie)));
-
   $('#search-results').append(newDiv);
 
 }
