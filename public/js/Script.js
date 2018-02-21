@@ -134,6 +134,8 @@ for (i in data) {
 
 }
 
+$('#myModal').modal('show')
+
       //show modal
       $('#myModal').modal();
     });

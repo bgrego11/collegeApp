@@ -40,12 +40,13 @@ body {
     top: 0;
 }
 
-.nav-links {
-    display: block;
-    left: 70px;
-    line-height: 50px;
-    position: absolute;
-    top: 0;
+.navbar-brand {
+    color: white;
+
+}
+
+.nav-link {
+    color: white;
 }
 
 .link {
@@ -58,6 +59,9 @@ body {
     color: white;
 }
 
+#social-link {
+    color: white;
+}
 
 
  #overridepanel-heading {
