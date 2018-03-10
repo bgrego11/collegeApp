@@ -12,6 +12,7 @@
 
 /* general style for the form */
 .nl-form {
+	color: white;
 	width: 100%;
 	margin: 0.3em auto 0 auto;
 	font-size: 4em;
@@ -71,7 +72,7 @@
 .nl-field ul {
 	position: absolute;
 	visibility: hidden;
-	background: #76C3BD;
+	background: rgb(200, 54, 54);
 	left: -0.5em;
 	top: 50%;
 	font-size: 80%;
@@ -107,7 +108,7 @@
 }
 
 .nl-dd ul li.nl-dd-checked {
-	color: #478982;
+	color: #ffffff;
 }
 
 .no-touch .nl-dd ul li:hover {
