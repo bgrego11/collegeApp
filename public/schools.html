@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>schools</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>College Spot!</title>
 
         <link rel="stylesheet" type="text/css" href="css/reset.css">
 <!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery.js"></script>
 	 <link rel="stylesheet" type="text/css" href="css/style.css">
-     <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
 
 
 </head>
 <body>
-<div id="nav">
-    <div class="nav-links">
-        <a class="link" href="/home">HOME</a>
-        <a class="link" href="/mySchools">SCHOOL LIST</a>
-        <a class="link" href="/search">SEARCH</a>
-    </div>
-</div>
+    <div class="wrapper">
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-danger bg-danger">
+        <a class="navbar-brand" href="/home">College Spot!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <button type="button" class="btn btn-danger" id="social-link">
+              <a class="nav-link" href="/home">Home</a>
+            </button>
+            <button type="button" class="btn btn-danger" id="social-link">
+              <a class="nav-link" href="/myschools">School List</a>
+          </button>
+          <button type="button" class="btn btn-danger" id="social-link">
+                <a class="nav-link" href="/search">Search</a>
+             </button>
+          </ul>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">
+              Sign In
+            </button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#createModal">
+              Create User
+            </button>
+            <button type="button" class="btn btn-danger" id="social-link">
+              <a  id="social-link" href="https://github.com/bgrego11/collegeapp" target="_blank">Source Code &nbsp;<i class="fa fa-github"></i></a>
+            </button>
+        </div>
+      </nav>
 
 <br><br>
-
+<div class="container">
         <div class="row">
-              <div class="col-lg-offset-2 col-lg-8 col-lg-offset-2">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel panel-heading">
                         <h3 class="panel-title">Your Chosen List of Schools</h3>
                     </div>
-                   <table class="text-center table table-hover table-striped">
+                   <table class="text-center table table-danger bg-danger table-hover table-striped">
                         <thead>
-                            <th>School Name</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Acceptance Rate</th>
-                            <th>Tuiton In State</th>
-                            <th>Tuiton Out State</th>
-                            <th> Actions</th>
-                            <th></th>
+                            <th><strong>School Name</strong></th>
+                            <th><strong>City</strong></th>
+                            <th><strong>State</strong></th>
+                            <th><strong>Acceptance Rate</strong></th>
+                            <th><strong>Tuiton In State</strong></th>
+                            <th><strong>Tuiton Out State</strong></th>
+                            <th><strong> Actions</strong></th>
+                           
                         </thead>
                         <tbody id="schoolTable">
 
@@ -51,11 +74,21 @@
                     </div>
                     </div>
                     </div>
-
+                    </div>
+                    <div class="push"></div>
                     
                 </div>
-            </div>
-        </div>
+        <footer>
+                <div id="contact">
+                      <div id="bottom"><a href="https://github.com/stevens125" target="_blank" class="logo">Steven Snyder | Full Stack Developer</a>
+                        <p class="made-by-me">Steven Snyder © 2018.</p>
+                    </div>
+                  </div>
+              </footer>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/schools.js"></script>
 		</body>
         </html>
