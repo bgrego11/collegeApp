@@ -16,8 +16,9 @@ $.get("/myCollege/"+sessionStorage.id, function(data) {
     newField = $('<td>')
     delBtn = $('<button>').attr('data-id', col.id)
     delBtn.addClass("btn btn-danger delBtn");
-    trash = $('<span>')
-    trash.addClass("glyphicon glyphicon-trash")
+    $(".btn.btn-danger.delBtn").attr("type", "button");
+    trash = $('<i>')
+    trash.addClass("far fa-trash-alt")
     delBtn.append(trash);
     newField.append(delBtn);
     newRow.append(newField)

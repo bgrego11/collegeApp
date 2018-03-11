@@ -99,7 +99,8 @@ for (i in data) {
   var link = $('<a>').attr("href", "http://"+data[i].Webstie);
   favBtn = $('<button>').attr("data-id", data[i].id);
   favBtn.addClass("btn btn-danger pull-right");
-  heart = $('<span>').addClass('glyphicon glyphicon-heart');
+  $(".btn.btn-danger.pull-right").attr("type", "button");
+  heart = $('<i>').addClass('fas fa-heart');
   favBtn.append(heart);
   newDiv.append(favBtn);
   
