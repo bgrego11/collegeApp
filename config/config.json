@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": "THEATLGa10$",
+    "username": "b64950895e2d7a",
+    "password": "87a2894f",
     "database": "college",
-    "host": "127.0.0.1",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "THEATLGa10$",
+    "username": "b64950895e2d7a",
+    "password": "87a2894f",
     "database": "college",
-    "host": "127.0.0.1",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "THEATLGa10$",
+    "username": "b64950895e2d7a",
+    "password": "87a2894f",
     "database": "college",
-    "host": "127.0.0.1",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   }
 }
